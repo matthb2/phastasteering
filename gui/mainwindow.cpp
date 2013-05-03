@@ -10,10 +10,9 @@ MainWindow::MainWindow(QWidget* p) : QWidget(p)
 	layout = new QGridLayout;
 	layout->setColumnStretch(0,100);
 	layout->setRowStretch(0,100);
-	layout->addWidget(viewer, 0,0);
+	//layout->addWidget(viewer, 0,0);
 	setLayout(layout);
 }
 MainWindow::~MainWindow()
 {
-	delete viewer;
 }
