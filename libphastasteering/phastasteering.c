@@ -7,12 +7,14 @@
 
 static void* context;
 static void* socket;
+static double pressure;
 
 void init_steering()
 {
 	context = zmq_ctx_new();
 	socket = zmq_socket(context, ZMQ_PAIR);
 	int rc = zmq_bind(socket, "tcp://*:5555");
+	pressure = -1.0;
 	assert(rc==0);
 
 }
@@ -24,7 +26,7 @@ void pollpressure(double* p, int* rxed)
 	rc = zmq_recv(socket, value, 100, ZMQ_DONTWAIT);
 	value[99] = '\0';
 	if(rc != -1) {
-		double pressure = atof(value);
+		pressure = atof(value);
 		*p = pressure;
 		*rxed = 1;
 	} else {
