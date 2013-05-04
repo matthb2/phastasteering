@@ -22,11 +22,6 @@ void init_steering()
 		int rc = zmq_bind(socket, "tcp://*:5555");
 		assert(rc==0);
 	}
-	context = zmq_ctx_new();
-	socket = zmq_socket(context, ZMQ_PAIR);
-	int rc = zmq_bind(socket, "tcp://*:5555");
-	assert(rc==0);
-
 }
 
 void pollpressure(double* p, int* rxed)
