@@ -1,5 +1,10 @@
 project(phastasteering)
 cmake_minimum_required(VERSION 2.8)
+enable_language(Fortran C CXX)
+include(FortranCInterface)
+FortranCInterface_Header(FCMangle.h)
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+include_directories(${CMAKE_SOURCE_DIR}/libphastasteering) 
 include_directories(${CMAKE_SOURCE_DIR}/external/cppzmq) 
 include_directories(${CMAKE_SOURCE_DIR}/external/libzmq/include)
 

@@ -1,8 +1,6 @@
 #include <stdio.h>
 
-void init_steering();
-void pollpressure(double* p, int* f);
-void cleanup_steering();
+#include "phastasteering.h"
 
 int main(int argc ,char** argv)
 {

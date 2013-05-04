@@ -3,6 +3,8 @@
 #include <assert.h>
 #include <zmq.h>
 
+#include "phastasteering.h"
+
 static void* context;
 static void* socket;
 
