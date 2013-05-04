@@ -8,11 +8,13 @@
 
 static void* context;
 static void* socket;
+static double pressure;
 
 void init_steering()
 {
 	int rank;
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+	pressure = -1.0;
 	if(rank == 0)
 	{
 		context = zmq_ctx_new();
@@ -20,6 +22,10 @@ void init_steering()
 		int rc = zmq_bind(socket, "tcp://*:5555");
 		assert(rc==0);
 	}
+	context = zmq_ctx_new();
+	socket = zmq_socket(context, ZMQ_PAIR);
+	int rc = zmq_bind(socket, "tcp://*:5555");
+	assert(rc==0);
 
 }
 
@@ -27,7 +33,6 @@ void pollpressure(double* p, int* rxed)
 {
 	char value[100];
 	int rc;
-	double pressure;
 	int rank;
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	if(rank == 0)
@@ -41,6 +46,7 @@ void pollpressure(double* p, int* rxed)
 		} else {
 			*rxed = -1;
 		}
+
 	}
 	MPI_Bcast(rxed, 1, MPI_INTEGER, 0, MPI_COMM_WORLD);
 	MPI_Bcast(&pressure, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
