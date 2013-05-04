@@ -1,2 +1,5 @@
 add_library(libphastasteering phastasteering.c)
 target_link_libraries(libphastasteering libzmq)
+if(NOT APPLE)
+	target_link_libraries(libphastasteering rt)
+endif(NOT APPLE)
