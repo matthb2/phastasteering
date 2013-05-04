@@ -20,14 +20,17 @@ MainWindow::MainWindow(QWidget* p) : QWidget(p)
 	QLabel* iplabel = new QLabel("Solver Hostname");
 	layout->addWidget(ip);
 	layout->addWidget(iplabel);	
+	ip->setText("localhost");
 	port = new QLineEdit();
 	QLabel* portlabel = new QLabel("Solver Port");
 	layout->addWidget(port);
 	layout->addWidget(portlabel);
+	port->setText("5555");
 	pressure = new QLineEdit();
 	QLabel* pressurelabel = new QLabel("Pressure");
 	layout->addWidget(pressure);
 	layout->addWidget(pressurelabel);
+	pressure->setText("0.00");
 	QPushButton* submitbutton = new QPushButton("Submit");
 	layout->addWidget(submitbutton);
 	QObject::connect(submitbutton, SIGNAL(clicked(bool)), 
