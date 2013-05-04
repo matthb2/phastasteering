@@ -5,6 +5,8 @@ include(FortranCInterface)
 FortranCInterface_Header(FCMangle.h)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/libphastasteering) 
+find_package(MPI REQUIRED)
+include_directories(${MPI_INCLUDE_PATH})
 include_directories(${CMAKE_SOURCE_DIR}/external/cppzmq) 
 include_directories(${CMAKE_SOURCE_DIR}/external/libzmq/include)
 

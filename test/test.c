@@ -1,9 +1,12 @@
 #include <stdio.h>
 
+#include <mpi.h>
+
 #include "phastasteering.h"
 
 int main(int argc ,char** argv)
 {
+	MPI_Init(&argc, &argv);
 	init_steering();
 	int i;
 	double p;
@@ -18,5 +21,6 @@ int main(int argc ,char** argv)
 		sleep(1);
 	}
 	cleanup_steering();
+	MPI_Finalize();
 	return(0);
 }
