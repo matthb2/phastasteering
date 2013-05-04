@@ -6,4 +6,4 @@ set(MOC_HEADERS mainwindow.h )
 
 QT4_WRAP_CPP(MOC_SRCS ${MOC_HEADERS})
 add_executable(phastasteering guimain.cpp ${MOC_SRCS} mainwindow.cpp ${MOC_SRCS})
-target_link_libraries(phastasteering ${QT_LIBRARIES} )
+target_link_libraries(phastasteering ${QT_LIBRARIES} libzmq )

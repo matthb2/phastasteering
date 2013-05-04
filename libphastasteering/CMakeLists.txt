@@ -1,0 +1,2 @@
+add_library(libphastasteering phastasteering.c)
+target_link_libraries(libphastasteering libzmq)
